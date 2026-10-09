@@ -1,0 +1,147 @@
+:root{
+  --green-dark:#00703c;
+  --green:#009640;
+  --gold:#e09a1a;
+  --navy:#173a8c;
+  --text:#212529;
+  --muted:#6c757d;
+  --border:#dee2e6;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:'Source Sans 3',sans-serif;color:var(--text);background:#fff}
+a{color:inherit;text-decoration:none}
+.container{max-width:1140px;margin:0 auto;padding:0 15px}
+
+/* Navbar */
+.navbar{background:#fff;height:114px;display:flex;align-items:center;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+.nav-inner{display:flex;align-items:center;gap:24px;width:100%}
+.brand{display:flex;align-items:center;gap:10px}
+.brand-name{font-size:18px;line-height:1.1;width:140px;font-weight:500}
+.divider{width:1px;height:50px;background:#333}
+.crest{display:inline-block;width:48px;height:66px;border-radius:6px 6px 24px 24px}
+.crest-gold{background:linear-gradient(#9b8a5a,#d8d3b8);border:3px solid #8a8a8a}
+.crest-green{background:var(--green-dark);border-top:7px solid #8a6a1f}
+.menu{display:flex;gap:20px;color:var(--muted);flex:1}
+.menu a:hover{color:var(--green-dark)}
+.menu small{font-size:9px}
+.plus{font-weight:700;font-size:20px;color:#495057}
+.nav-right{display:flex;gap:16px;align-items:center}
+.search{width:46px;height:46px;border-radius:50%;border:0;background:#f1f1f3;cursor:pointer}
+.signin{border:1px solid var(--border);padding:8px 16px;border-radius:6px;color:var(--muted)}
+
+/* Hero: logo a la izquierda, docente a la derecha */
+.hero{
+  background:radial-gradient(circle,#1d46a5 0%,#122f78 100%);
+  height:490px;
+  display:flex;align-items:center;
+  justify-content:flex-start;
+  padding-left:max(15px, calc((100% - 1140px) / 2 + 15px));
+  position:relative;overflow:hidden;
+}
+.hero::before{
+  content:"";
+  position:absolute;top:0;right:0;height:100%;aspect-ratio:1 / 1;
+  background:url('https://images.stockcake.com/public/5/f/6/5f64b157-937a-493f-83e7-4acf12e819be_large/inspiring-teacher-illustration-stockcake.jpg') center / cover no-repeat;
+  -webkit-mask-image:linear-gradient(to right, transparent, #000 35%);
+          mask-image:linear-gradient(to right, transparent, #000 35%);
+}
+.logo65{position:relative;z-index:1;width:440px;height:290px;text-align:center}
+.logo65 .num{position:absolute;left:0;right:0;top:-30px;font-size:260px;font-weight:700;color:#fff;line-height:1;letter-spacing:-12px}
+.logo65 .shapes i{position:absolute;border-radius:50%}
+.s-green{width:210px;height:210px;background:#0a7d12;left:0;bottom:30px}
+.s-blue{width:260px;height:260px;background:#1d66d6;right:30px;bottom:40px}
+.s-yellow{width:120px;height:120px;background:#f5b400;right:0;bottom:30px}
+.s-orange{width:60px;height:60px;background:#f5a300;left:20px;top:90px}
+.dot-g{width:50px;height:50px;background:#00c000;left:55%;top:-10px}
+.dot-b{width:24px;height:24px;background:#3d7fe0;right:20px;top:20px}
+.anniv{position:absolute;bottom:-20px;left:0;right:0;font-size:56px;font-weight:700;color:#fff;letter-spacing:2px}
+
+/* Banner */
+.banner{background:var(--green-dark);color:#fff;padding:48px 0 50px}
+.banner-inner{display:flex;justify-content:space-between;align-items:flex-start;gap:30px;flex-wrap:wrap}
+.banner h2{margin:0;font-size:30px}
+.banner p{margin:4px 0 0;max-width:540px;font-weight:700;font-size:18px;line-height:1.1}
+.banner-actions{display:flex;gap:24px}
+.action{text-align:center}
+.action h3{margin:0 0 6px;font-size:28px}
+.btn-green{display:block;background:var(--green);padding:10px 18px;border-radius:6px;min-width:110px}
+
+/* Programas */
+.programs{display:flex;justify-content:space-between;padding-top:48px;padding-bottom:20px}
+.program{width:33%;text-align:center}
+.icon-box{width:96px;height:96px;margin:0 auto;background:var(--green);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:40px}
+.program h3{margin:10px 0 0;font-size:28px;font-weight:700}
+
+/* Títulos y tarjetas */
+.section-title{color:var(--gold);text-align:center;font-size:38px;margin:30px 0 20px}
+.gold{color:var(--gold)}
+.card{background:#fff;border:1px solid var(--border);border-radius:8px;box-shadow:0 8px 20px rgba(0,0,0,.1);overflow:hidden;display:flex;flex-direction:column}
+.card-body{padding:14px 16px}
+.card h4{margin:0 0 8px;font-size:22px;line-height:1.1}
+.card p{margin:0 0 10px;font-size:16px;line-height:1.2}
+.card-link{margin-top:auto;padding:0 16px 40px;text-align:center;color:var(--green-dark);font-weight:700}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-bottom:30px}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:30px}
+
+/* Pósters de eventos */
+.poster{height:300px;background-size:cover;background-position:center;background-repeat:no-repeat}
+.poster-lectura{background:linear-gradient(#0f5a2e 65%,#b8892f 65% 75%,#0f5a2e 75%)}
+.poster-meritus{background:linear-gradient(#0b4a2a 70%,#fff 70%)}
+.poster-inmobiliario{background:linear-gradient(#c7d3dc 25%,#0f5a2e 25%)}
+.poster-paz{background:linear-gradient(#f28c1d 18%,#f6efe0 18%)}
+
+/* Noticias */
+.news-img{height:200px;background-size:cover;background-position:center}
+.news h4{font-size:20px}
+.date{color:var(--muted);font-size:15px}
+.cat{margin-top:14px !important;color:var(--muted);font-size:15px !important}
+.cat a{color:var(--green-dark)}
+
+/* Acreditaciones */
+.accred{text-align:center;padding:50px 15px 30px}
+.accred h2{font-size:42px;margin:0}
+.accred p{margin:0 0 20px}
+.logos{display:flex;justify-content:center;gap:90px;margin-top:30px}
+.logo-badge{font-size:26px;font-weight:700;letter-spacing:1px;padding:18px 24px;border-bottom:2px solid #000}
+
+/* Footer */
+.footer{background:var(--green-dark);color:#fff;padding:40px 0 30px;margin-top:20px}
+.footer-top{display:flex;justify-content:space-between;gap:30px;padding-bottom:30px;border-bottom:1px solid #1a8a55}
+.footer-cols{display:flex;gap:60px;flex-wrap:wrap}
+.footer h4{margin:0 0 4px;font-size:20px}
+.footer-cols a{display:block;font-size:15px;margin:2px 0}
+.footer-cols a:hover{text-decoration:underline}
+.social{display:flex;gap:18px;font-size:20px;font-weight:700}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;gap:30px;padding-top:30px;flex-wrap:wrap}
+.footer-school{display:flex;gap:14px;align-items:center}
+.footer-school .crest{width:24px;height:34px;border-width:2px}
+.campus{font-size:20px}
+.footer small{color:#cfe6d8}
+.lines{display:flex;gap:50px}
+.lines div{display:flex;flex-direction:column}
+.lines strong{font-size:20px}
+.lines .right{text-align:right}
+.lines .right a{text-decoration:underline}
+
+/* Chat flotante */
+.chat{position:fixed;right:20px;bottom:20px;display:flex;align-items:center;gap:10px;z-index:10}
+.chat-label{background:#f3f5f7;color:#222;padding:10px 14px;border-radius:6px;font-size:15px;box-shadow:0 2px 6px rgba(0,0,0,.15)}
+.chat-btn{width:50px;height:50px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:22px}
+
+/* Responsive */
+@media (max-width:992px){
+  .grid-4{grid-template-columns:repeat(2,1fr)}
+  .grid-3{grid-template-columns:repeat(2,1fr)}
+  .menu{display:none}
+  .navbar{height:90px}
+  .logo65{transform:scale(.7)}
+  .hero{justify-content:center;padding-left:15px}
+  .hero::before{opacity:.35}
+}
+@media (max-width:600px){
+  .grid-4,.grid-3{grid-template-columns:1fr}
+  .programs{flex-direction:column;gap:20px}
+  .program{width:100%}
+  .logos{gap:20px;flex-wrap:wrap}
+  .chat-label{display:none}
+}
