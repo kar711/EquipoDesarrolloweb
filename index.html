@@ -1,0 +1,166 @@
+{% extends "base.html" %}
+{% block content %}
+
+{# ===== IMÁGENES (agrega o cambia URLs aquí) ===== #}
+{% set ev_imgs = {
+  1: 'https://thumbs.dreamstime.com/b/anime-la-chica-manga-con-vestido-azul-y-arco-rosado-en-su-cabello-ilustraci%C3%B3n-de-un-joven-uniforme-escuela-marinero-una-proa-389532500.jpg',
+  2: 'https://img.magnific.com/foto-gratis/retrato-estilo-anime-joven-estudiante-que-asiste-escuela_23-2151125240.jpg',
+  3: 'https://thumbs.dreamstime.com/b/alegre-colegiala-anime-con-gafas-y-uniforme-de-marinera-412441524.jpg',
+  4: 'https://w7.pngwing.com/pngs/126/299/png-transparent-school-uniform-mangaka-black-hair-anime-school-purple-black-hair-fictional-character.png'
+} %}
+{% set news_imgs = {
+  1: 'https://png.pngtree.com/png-vector/20250803/ourmid/pngtree-blue-haired-anime-boy-with-glasses-dressed-in-a-classic-school-png-image_16817883.webp',
+  2: 'https://images.stockcake.com/public/1/1/a/11a35f36-6fd0-4b55-a79d-76c16315c378_large/enthusiastic-anime-educator-stockcake.jpg',
+  3: 'https://png.pngtree.com/png-vector/20240822/ourmid/pngtree-cute-anime-school-girl-with-backpack-clipart-illustration-png-image_13589080.png'
+} %}
+{% set news_contain = [1, 3] %}
+
+<!-- NAVBAR -->
+<header class="navbar">
+  <div class="container nav-inner">
+    <div class="brand">
+      <span class="crest crest-gold"></span><span class="divider"></span><span class="crest crest-green"></span>
+      <span class="brand-name">{{ site.name }}</span>
+    </div>
+    <nav class="menu">
+      {% for item in site.menu %}
+        <a href="{{ item.url }}">{{ item.label }}{% if item.dropdown %} <small>▼</small>{% endif %}</a>
+      {% endfor %}
+      <a href="#" class="plus">+</a>
+    </nav>
+    <div class="nav-right">
+      <button class="search" aria-label="Search">🔍</button>
+      <a href="#" class="signin">Sign in</a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO (la docente va en el CSS: .hero::before) -->
+<section class="hero">
+  <div class="logo65">
+    <div class="num">65</div>
+    <div class="shapes"><i class="s-green"></i><i class="s-blue"></i><i class="s-yellow"></i><i class="s-orange"></i><i class="dot-g"></i><i class="dot-b"></i></div>
+    <div class="anniv">ANIVERSARIO</div>
+  </div>
+</section>
+
+<!-- BANNER VERDE -->
+<section class="banner">
+  <div class="container banner-inner">
+    <div class="banner-text">
+      <h2>{{ banner.title }}</h2>
+      <p>{{ banner.text }}</p>
+    </div>
+    <div class="banner-actions">
+      {% for a in banner.actions %}
+      <div class="action">
+        <h3>{{ a.group }}</h3>
+        <a class="btn-green" href="{{ a.url }}">{{ a.label }}</a>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAMAS -->
+<section class="programs container">
+  {% for p in programs %}
+  <div class="program">
+    <div class="icon-box">{{ p.icon }}</div>
+    <h3>{{ p.name }}</h3>
+  </div>
+  {% endfor %}
+</section>
+
+<!-- EVENTOS -->
+<section class="container">
+  <h2 class="section-title">Upcoming events</h2>
+  <div class="grid-4">
+    {% for e in events %}
+    <article class="card event">
+      {% if ev_imgs.get(loop.index) %}
+      <div class="poster poster-{{ e.poster }}"
+           style="background: {{ '#d9efe2' if loop.index == 4 else '#fff' }} url('{{ ev_imgs[loop.index] }}') center / contain no-repeat;"></div>
+      {% else %}
+      <div class="poster poster-{{ e.poster }}"></div>
+      {% endif %}
+      <div class="card-body">
+        <h4 class="gold">{{ e.title }}</h4>
+        <p>{{ e.text }}</p>
+        {% if e.detail %}<p>{{ e.detail|safe }}</p>{% endif %}
+      </div>
+      {% if e.link %}<a class="card-link" href="{{ e.link }}">{{ e.link_label }}</a>{% endif %}
+    </article>
+    {% endfor %}
+  </div>
+</section>
+
+<!-- NOTICIAS -->
+<section class="container">
+  <h2 class="section-title">Recent News</h2>
+  <div class="grid-3">
+    {% for n in news %}
+    <article class="card news">
+      {% if news_imgs.get(loop.index) %}
+      <div class="news-img"
+           style="background: {{ n.color }} url('{{ news_imgs[loop.index] }}') {{ 'center / contain' if loop.index in news_contain else 'center top / cover' }} no-repeat;"></div>
+      {% else %}
+      <div class="news-img" style="background: {{ n.color }}"></div>
+      {% endif %}
+      <div class="card-body">
+        <h4>{{ n.title }}</h4>
+        <span class="date">{{ n.date }}</span>
+        <p class="cat">In <a href="#">FCA News 2026</a></p>
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+</section>
+
+<!-- ACREDITACIONES -->
+<section class="accred container">
+  <h2>Accreditations</h2>
+  <p>The quality of our programs is backed by national and international certifications.</p>
+  <div class="logos">
+    {% for a in accreditations %}<span class="logo-badge">{{ a }}</span>{% endfor %}
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-cols">
+        {% for col in footer.columns %}
+        <div>
+          <h4>{{ col.title }}</h4>
+          {% for l in col.links %}<a href="#">{{ l }}</a>{% endfor %}
+        </div>
+        {% endfor %}
+      </div>
+      <div class="social">
+        {% for s in footer.social %}<a href="#">{{ s }}</a>{% endfor %}
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-school">
+        <span class="crest crest-gold"></span><span class="crest crest-green"></span>
+        <div>
+          <strong>{{ footer.school }}</strong>
+          <div class="campus">{{ footer.campus }}</div>
+          <small>{{ footer.address }}</small>
+        </div>
+      </div>
+      <div class="lines">
+        <div><small>University Line</small><strong>{{ footer.university_line }}</strong></div>
+        <div class="right"><small>Faculty Direct Line</small><strong><a href="#">{{ footer.faculty_line }}</a></strong></div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<a href="#" class="chat">
+  <span class="chat-label">Have a Question? Chat with us.</span>
+  <span class="chat-btn">💬</span>
+</a>
+{% endblock %}
